@@ -58,5 +58,8 @@
                CommandParameter="{Binding SelectedEducationLevel}"
        />
         </StackPanel>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" Padding="0 2"></TextBox>
+        <xwpftk:IntegerUpDown HorizontalAlignment="Left" MinWidth="40" Grid.Row="3" Grid.Column="1" Margin="2 2 100 2"></xwpftk:IntegerUpDown>
+
     </Grid>
 </UserControl>

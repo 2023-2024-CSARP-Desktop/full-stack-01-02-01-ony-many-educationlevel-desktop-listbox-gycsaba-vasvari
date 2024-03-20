@@ -2,6 +2,8 @@
 using Kreta.Desktop.ViewModels.Base;
 using Kreta.HttpService.Services;
 using Kreta.Shared.Models;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -33,6 +35,13 @@ namespace Kreta.Desktop.ViewModels.Administration
             await base.InitializeAsync();
         }
 
-
+        private async Task UpdateView()
+        {
+            if (_educationLevelService is not null)
+            {
+                List<EducationLevel> result= await _educationLevelService.SelectAllAsync();
+                EducationLevels = new ObservableCollection<EducationLevel>(result);
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Kreta.Desktop.ViewModels.Administration
     public partial class EducationLevelViewModel : BaseViewModel
     {
         private readonly IEducationLevelService? _educationLevelService;
+        private readonly IStudentService? _studentService;
 
         [ObservableProperty]
         private ObservableCollection<EducationLevel> _educationLevels = new();
@@ -24,9 +25,12 @@ namespace Kreta.Desktop.ViewModels.Administration
         public EducationLevelViewModel()
         {            
         }
-        public EducationLevelViewModel(IEducationLevelService? educationLevelService)
+        public EducationLevelViewModel(
+            IEducationLevelService? educationLevelService,
+            IStudentService? studentService)
         {
             _educationLevelService = educationLevelService;
+            _studentService = studentService;
         }
 
         public string Title { get; set; } = "Tanulmányi szint kezelése";
@@ -74,6 +78,12 @@ namespace Kreta.Desktop.ViewModels.Administration
         [RelayCommand]
         private async Task GetStudentsByEducationLevelId()
         {
+            if (_studentService is not null &&
+                SelectedEducationLevel is not null &&
+                SelectedEducationLevel.HasId)
+            {
+
+            }
         }
 
         private async Task UpdateView()

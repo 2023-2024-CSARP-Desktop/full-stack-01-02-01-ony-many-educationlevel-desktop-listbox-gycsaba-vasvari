@@ -32,5 +32,6 @@
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="200"></RowDefinition>
         </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="{Binding Title}"></Label>
     </Grid>
 </UserControl>

@@ -60,6 +60,9 @@
         </StackPanel>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" Padding="0 2"></TextBox>
         <xwpftk:IntegerUpDown HorizontalAlignment="Left" MinWidth="40" Grid.Row="3" Grid.Column="1" Margin="2 2 100 2"></xwpftk:IntegerUpDown>
-
+        <ListBox Grid.Row="5"
+                Grid.ColumnSpan="2" 
+                Margin="10 2 10 10">
+        </ListBox>
     </Grid>
 </UserControl>

@@ -80,8 +80,10 @@
 
         <Label Grid.Row="4" Grid.Column="3" VerticalAlignment="Bottom">A tanulmányi szinthez tartozó diákok:</Label>
         <ListBox Grid.Row="5"
-          Grid.Column="3"
-          Margin="10 2 10 10"        
+                 Grid.Column="3"
+                 Margin="10 2 10 10"  
+                 ItemsSource="{Binding StudentsWithEducationLevel}"
+                 SelectedItem="{Binding SelectedStudentWithEducationLevel}"
         />
         <StackPanel Grid.Row="6" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE1FD;"></Button>

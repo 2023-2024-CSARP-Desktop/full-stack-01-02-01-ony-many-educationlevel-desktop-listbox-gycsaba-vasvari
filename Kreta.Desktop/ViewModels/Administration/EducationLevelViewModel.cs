@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Kreta.Desktop.ViewModels.Base;
 using Kreta.HttpService.Services;
 using Kreta.Shared.Models;
+using Kreta.Shared.Models.SchoolCitizens;
 using Kreta.Shared.Responses;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,12 @@ namespace Kreta.Desktop.ViewModels.Administration
 
         [ObservableProperty]
         private EducationLevel _selectedEducationLevel = new();
+
+        [ObservableProperty]
+        private ObservableCollection<Student> _studentsWithEducationLevel = new();
+
+        [ObservableProperty]
+        private Student _selectedStudentWithEducationLevel = new();
 
         public EducationLevelViewModel()
         {            
@@ -82,7 +89,8 @@ namespace Kreta.Desktop.ViewModels.Administration
                 SelectedEducationLevel is not null &&
                 SelectedEducationLevel.HasId)
             {
-
+                List<Student> studentsWithEducationLevelId = await _studentService.GetStudentsByEducationId(SelectedEducationLevel.Id);
+                StudentsWithEducationLevel = new ObservableCollection<Student>(studentsWithEducationLevelId);
             }
         }
 

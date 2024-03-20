@@ -71,6 +71,11 @@ namespace Kreta.Desktop.ViewModels.Administration
             }
         }
 
+        [RelayCommand]
+        private async Task GetStudentsByEducationLevelId()
+        {
+        }
+
         private async Task UpdateView()
         {
             if (_educationLevelService is not null)

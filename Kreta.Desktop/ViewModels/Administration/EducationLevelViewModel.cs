@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Kreta.Desktop.ViewModels.Base;
 using Kreta.HttpService.Services;
 using Kreta.Shared.Models;
+using Kreta.Shared.Responses;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,6 +35,40 @@ namespace Kreta.Desktop.ViewModels.Administration
         {
             await UpdateView();
             await base.InitializeAsync();
+        }
+
+        [RelayCommand]
+        private void DoNew()
+        {
+            SelectedEducationLevel = new();
+        }
+
+        [RelayCommand]
+        private async Task DoRemove(EducationLevel educationLevelToDelete)
+        {
+            if (_educationLevelService is not null)
+            {
+                ControllerResponse result= await _educationLevelService.DeleteAsync(educationLevelToDelete.Id);
+                if ( result.IsSuccess)
+                {
+                    await UpdateView();
+                }
+            }
+        }
+
+        [RelayCommand]
+        private async Task DoSave(EducationLevel educationLevelToSave)
+        {
+            if (_educationLevelService is not null)
+            {
+                ControllerResponse result = new();
+                if (educationLevelToSave.HasId)
+                    result = await _educationLevelService.UpdateAsync(educationLevelToSave);
+                else
+                    result = await _educationLevelService.InsertAsync(educationLevelToSave);
+                if (result.IsSuccess)
+                    await UpdateView();
+            }
         }
 
         private async Task UpdateView()

@@ -33,5 +33,10 @@ namespace Kreta.HttpService.Services
             }
             return new List<Student>();
         }
+
+        public Task<List<Student>> GetStudentsByEducationId(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

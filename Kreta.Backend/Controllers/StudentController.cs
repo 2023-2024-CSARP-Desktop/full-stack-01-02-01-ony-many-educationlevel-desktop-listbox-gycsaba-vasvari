@@ -45,7 +45,7 @@ namespace Kreta.Backend.Controllers
             {
                 try
                 {
-                    students = await _studentRepo.SelectStudentsByEducationId(educationID).ToListAsync();
+                    students = await _studentRepo.SelectStudentsByEducationId(educationId).ToListAsync();
                     return Ok(students.Select(entity => _assambler.ToDto(entity)));
                 }
                 catch (Exception ex)

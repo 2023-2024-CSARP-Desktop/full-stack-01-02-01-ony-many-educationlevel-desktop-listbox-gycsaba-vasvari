@@ -35,5 +35,25 @@ namespace Kreta.Backend.Controllers
             }
             return BadRequest("Az adatok elérhetetlenek!");
         }
+
+
+        [HttpGet("byeducationid/{educationId}")]
+        public async Task<IActionResult> SelectStudentsByEducationId(Guid educationId)
+        {
+            List<Student>? students = new();
+            if (_repo != null)
+            {
+                try
+                {
+                    students = await _studentRepo.SelectStudentsByEducationId(educationID).ToListAsync();
+                    return Ok(students.Select(entity => _assambler.ToDto(entity)));
+                }
+                catch (Exception ex)
+                {
+                    await Console.Out.WriteLineAsync(ex.Message);
+                }
+            }
+            return BadRequest("Az adatok elérhetetlenek!");
+        }
     }
 }

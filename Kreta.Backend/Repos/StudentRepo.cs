@@ -14,5 +14,10 @@ namespace Kreta.Backend.Repos
         {
             return FindAll().Include(student => student.EducationLevel);
         }
+
+        public IQueryable<Student> SelectStudentsByEducationId(Guid educationID)
+        {
+            return FindAll().Where(student => student.EducationLevelId == educationID);
+        }
     }
 }

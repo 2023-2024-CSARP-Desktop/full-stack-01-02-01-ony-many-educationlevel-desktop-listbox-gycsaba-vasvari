@@ -90,8 +90,9 @@
             <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE110;"></Button>
         </StackPanel>
         <Label Grid.Row="7" Grid.Column="3" VerticalAlignment="Bottom">Tanulmányi szinttel nem rendelkező diákok:</Label>
-        <ListBox Grid.Row="8" Grid.Column="3"
-          Margin="10 2 10 10">
+        <ListBox Grid.Row="8" Grid.Column="2" Margin="10,4,10,8"
+                 ItemsSource="{Binding StudentsWithEducationLevel}"
+                 SelectedItem="{Binding SelectedStudentWithoutEducationLevel}">
         </ListBox>
     </Grid>
 </UserControl>

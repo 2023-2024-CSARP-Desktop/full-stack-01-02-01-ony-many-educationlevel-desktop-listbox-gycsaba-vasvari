@@ -29,6 +29,12 @@ namespace Kreta.Desktop.ViewModels.Administration
         [ObservableProperty]
         private Student _selectedStudentWithEducationLevel = new();
 
+        [ObservableProperty]
+        private ObservableCollection<Student> _studentsWithoutEducationLevel=new();
+
+        [ObservableProperty]
+        private Student _selectedStudentWithoutEducationLevel=new();
+
         public EducationLevelViewModel()
         {            
         }
@@ -96,10 +102,14 @@ namespace Kreta.Desktop.ViewModels.Administration
 
         private async Task UpdateView()
         {
-            if (_educationLevelService is not null)
+            if (_educationLevelService is not null && _studentService is not null)
             {
                 List<EducationLevel> result= await _educationLevelService.SelectAllAsync();
                 EducationLevels = new ObservableCollection<EducationLevel>(result);
+
+                List<Student> withoutEducationLevelResult =
+                    await _studentService.GetStudentWithoutEducationLevel();
+                StudentsWithoutEducationLevel = new ObservableCollection<Student>(withoutEducationLevelResult);
             }
         }
     }

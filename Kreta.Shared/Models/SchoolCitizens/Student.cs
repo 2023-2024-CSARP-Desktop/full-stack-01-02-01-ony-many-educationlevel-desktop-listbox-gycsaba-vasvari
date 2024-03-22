@@ -30,7 +30,7 @@
         }
 
         public Guid Id { get; set; }
-        public Guid EducationLevelId { get; set; }
+        public Guid? EducationLevelId { get; set; }
         public virtual EducationLevel? EducationLevel { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

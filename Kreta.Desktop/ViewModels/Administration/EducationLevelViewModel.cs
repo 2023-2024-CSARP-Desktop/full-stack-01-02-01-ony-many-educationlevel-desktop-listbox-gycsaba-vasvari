@@ -100,6 +100,33 @@ namespace Kreta.Desktop.ViewModels.Administration
             }
         }
 
+        [RelayCommand]
+        private async Task MoveStudentToWithoutEducationLevel()
+        {
+            if (_studentService is not null && SelectedStudentWithEducationLevel is not null)
+            {
+                SelectedStudentWithEducationLevel.EducationLevelId = null;
+                ControllerResponse result = await _studentService.UpdateAsync(SelectedStudentWithEducationLevel);
+                if (result.IsSuccess)
+                    await UpdateView();               
+            }
+        }
+
+        [RelayCommand]
+        private async Task MoveStudentToWithEducationLevel()
+        {
+            if (_studentService is not null &&
+                SelectedStudentWithoutEducationLevel is not null 
+                && SelectedEducationLevel is not null)
+            {
+                SelectedStudentWithoutEducationLevel.EducationLevelId =
+                    SelectedEducationLevel.Id;
+                ControllerResponse response = await _studentService.UpdateAsync(SelectedStudentWithoutEducationLevel);
+                if (response.IsSuccess)
+                    await UpdateView();
+            }
+        }
+
         private async Task UpdateView()
         {
             if (_educationLevelService is not null && _studentService is not null)

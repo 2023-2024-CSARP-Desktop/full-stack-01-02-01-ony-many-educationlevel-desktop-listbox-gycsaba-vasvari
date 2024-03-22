@@ -86,8 +86,13 @@
                  SelectedItem="{Binding SelectedStudentWithEducationLevel}"
         />
         <StackPanel Grid.Row="6" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE1FD;"></Button>
-            <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE110;"></Button>
+            <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE1FD;"
+                    Command="{Binding MoveStudentToWithoutEducationLevelCommand}">
+            </Button>
+            <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE110;"
+                    Command="{Binding MoveStudentToWithEducationLevelCommand}"
+                    >
+            </Button>
         </StackPanel>
         <Label Grid.Row="7" Grid.Column="3" VerticalAlignment="Bottom">Tanulmányi szinttel nem rendelkező diákok:</Label>
         <ListBox Grid.Row="8" Grid.Column="2" Margin="10,4,10,8"

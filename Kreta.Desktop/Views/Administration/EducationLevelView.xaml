@@ -91,7 +91,7 @@
         </StackPanel>
         <Label Grid.Row="7" Grid.Column="3" VerticalAlignment="Bottom">Tanulmányi szinttel nem rendelkező diákok:</Label>
         <ListBox Grid.Row="8" Grid.Column="2" Margin="10,4,10,8"
-                 ItemsSource="{Binding StudentsWithEducationLevel}"
+                 ItemsSource="{Binding StudentsWithoutEducationLevel}"
                  SelectedItem="{Binding SelectedStudentWithoutEducationLevel}">
         </ListBox>
     </Grid>

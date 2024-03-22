@@ -87,7 +87,20 @@ namespace Kreta.Backend.Context
                     SchoolYear=13,
                     SchoolClass = SchoolClassType.ClassB,
                     EducationLevelId=EducatuionLevelId2,
+                },
+                new Student
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Alacsony",
+                    LastName="Anna",
+                    IsWoman=true,
+                    BirthDay=new DateTime(2016,6,6),
+                    PlaceOfBirth="Apátfalva",
+                    SchoolYear=11,
+                    SchoolClass = SchoolClassType.ClassB,
+                    EducationLevelId=null,
                 }
+
             };
             List<Teacher> teachers = new()
             {

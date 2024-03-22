@@ -55,5 +55,27 @@ namespace Kreta.HttpService.Services
             }
             return new List<Student>();
         }
+
+        public async Task<List<Student>> GetStudentsWithoutEducationLevel()
+        {
+            if (_httpClient is not null)
+            {
+                try
+                {
+
+                    List<StudentDto>? resultDto = await _httpClient.GetFromJsonAsync<List<StudentDto>>($"api/Student/withouteducationlevel");
+                    if (resultDto is not null)
+                    {
+                        List<Student> result = resultDto.Select(entity => _assambler.ToModel(entity)).ToList();
+                        return result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            return new List<Student>();
+        }
     }
 }

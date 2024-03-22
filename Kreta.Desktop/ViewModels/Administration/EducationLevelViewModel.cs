@@ -108,7 +108,7 @@ namespace Kreta.Desktop.ViewModels.Administration
                 EducationLevels = new ObservableCollection<EducationLevel>(result);
 
                 List<Student> withoutEducationLevelResult =
-                    await _studentService.GetStudentWithoutEducationLevel();
+                    await _studentService.GetStudentsWithoutEducationLevel();
                 StudentsWithoutEducationLevel = new ObservableCollection<Student>(withoutEducationLevelResult);
             }
         }
